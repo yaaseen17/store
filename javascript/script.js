@@ -9,7 +9,7 @@ let products = JSON.parse(localStorage.getItem("products"))
       },
       {
         name: "roll",
-        catergory: "Bread",
+        catergory: "fruits",
         price: "5",
         img: "https://www.melskitchencafe.com/wp-content/uploads/french-bread-roll1.jpg",
       },
@@ -21,7 +21,7 @@ let products = JSON.parse(localStorage.getItem("products"))
       },
       {
         name: "loaf",
-        catergory: "Bread",
+        catergory: "fruits",
         price: "10 000",
         img: "https://www.thespruceeats.com/thmb/aKWwztjCoTsiPzayXvDYx6QLyOs=/4288x2412/smart/filters:no_upscale()/loaf-of-bread-182835505-58a7008c5f9b58a3c91c9a14.jpg",
       },
@@ -37,15 +37,15 @@ function readData(products) {
   products.forEach((products, i) => {
     document.querySelector("#products").innerHTML += `
    
-    <div class="card col-4" style="width: 18rem;">
+    <div class="card col-4 " style="width: 18rem;">
     <img src="${products.img}" >
     <div class="card-body">
       <h5 class="card-title">${products.name}</h5>
       <p class="card-text">R${products.price}</p>
-      <input type="number" min =1 id="addQty${i}" value=1>
+      <input type="number" min =1 id="addQty${i}" value=1 style="width:50px;"><br>
       <button
       type="button"
-      class="btn btn-primary"
+      class="btn btn-dark"
       onclick="deleteProducts(${i})"
     >
       Delete
@@ -53,12 +53,13 @@ function readData(products) {
     
     <button
           type="button"
-          class="btn btn-primary"
+          class="btn btn-danger"
           data-bs-toggle="modal"
           data-bs-target="#edit${i}"
         >
           Edit
         </button>
+        
         <button
         type="button"
         class="btn btn-primary"
@@ -91,7 +92,7 @@ function readData(products) {
         <input type="text" placeholder="Enter price" id="price-${i}" value="${products.price}" />
         <input type="text" placeholder="Enter img url" id="image-${i}" value="${products.img}"/>
         <select name="catergory" id="catergory-${i}" value="${products.catergory}">
-          <option value="Bread">Bread</option>
+          <option value="fruits">fruits</option>
           <option value="Sweets">Sweets</option>
           <option value="Juices">Juices</option>
         </select>
@@ -118,6 +119,15 @@ function readData(products) {
   </div>
 </div>
         `;
+
+    let totalQty = 0;
+
+    cart.forEach((item) => {
+      totalQty += parseInt(item.qty);
+    });
+    if (totalQty != 0) {
+      document.querySelector("#badge").innerHTML = totalQty;
+    }
   });
 }
 readData(products);
@@ -179,7 +189,26 @@ function addToCart(i) {
     cart.push({ ...products[i], qty });
     localStorage.setItem("cart", JSON.stringify(cart));
   }
+  readData(products);
 }
+
+function catergorySort() {
+  let catergory = document.querySelector("#catergorySort").value;
+
+  console.log(catergorySort);
+
+  if (catergory == "all") {
+    readData(products);
+    return;
+  }
+
+  let filteredProducts = products.filter((products) => {
+    return products.catergory == catergory;
+  });
+
+  readData(filteredProducts);
+}
+
 function priceSort() {
   let direction = document.querySelector("#priceSort").value;
 
@@ -188,22 +217,22 @@ function priceSort() {
   console.log(sortedProducts);
 
   if (direction == "descending") sortedProducts.reverse();
-  readProducts(sortedProducts);
+  readData(sortedProducts);
 }
 
 function sortName() {
   let direction = document.querySelector("#sortName").value;
 
   let sortedProducts = products.sort((a, b) => {
-    if (a.title.toLowerCase() < b.title.toLowerCase()) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
       return -1;
     }
-    if (a.title.toLowerCase() > b.title.toLowerCase()) {
+    if (a.name.toLowerCase() > b.name.toLowerCase()) {
       return 1;
     }
     return 0;
   });
   if (direction == "descending") sortedProducts.reverse();
   console.log(sortedProducts);
-  readProducts(products);
+  readData(products);
 }

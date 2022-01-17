@@ -1,0 +1,37 @@
+.navbar-brand #badge {
+  background-color: rgb(204, 63, 63);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  margin-left: 40px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+.btn {
+  margin: 20px;
+}
+.card {
+  margin: 30px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+#cart {
+  width: 500px;
+  height: 500px;
+  margin: auto;
+}
+body {
+  padding: 50px;
+  margin: auto;
+}
+#sortName {
+  margin-bottom: 50px;
+}
+
+.navbar {
+  height: 70px;
+}
+.container {
+  display: flex;
+  justify-content: space-between;
+}

@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Page Title</title>
+    <title>Shopping</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <link rel="stylesheet" href="../css/style.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -15,10 +15,11 @@
     />
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-secondary">
       <div class="container-fluid justify-content-end">
-        <a class="navbar-brand" href="./index.html">Home</a>
-        <a class="navbar-brand" href="./cart.html">Cart</a>
+        <a class="navbar-brand" href="./index.html"  style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Home</a>
+        <a class="navbar-brand" href="./cart.html" style=" font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"><span id="badge" style="color: white"></span>Cart</a
+        >
         <button
           type="button"
           class="btn btn-primary"
@@ -33,9 +34,40 @@
     <!-- As a heading -->
     <nav class="navbar navbar-light bg-light">
       <div class="container-fluid">
-        <span class="navbar-brand mb-0 h1">F and V store</span>
+        <span class="navbar-brand mb-0 h1" style="margin: auto; font-size: 40px; font-family: Georgia, 'Times New Roman', Times, serif;">The Grocery shop</span>
       </div>
     </nav>
+  <div class="container">
+    <div>
+      <label for="catergorySort" class="form-label"> Sort by catergory:</label>
+      <select
+        name="catergorySort"
+        id="catergorySort"
+        onchange="catergorySort()"
+      >
+        <option value="all">all</option>
+        <option value="fruits">fruits</option>
+        <option value="Sweets">Sweets</option>
+        <option value="Juices">Juices</option>
+      </select>
+    </div>
+    <div>
+      <label for="priceSort" class="form-label"> Sort by price:</label>
+      <select name="priceSort" id="priceSort" onchange="priceSort()">
+        Sort by price
+        <option value="Ascending">Ascending</option>
+        <option value="descending">Descending</option>
+      </select>
+    </div>
+    <div>
+      <label for="sortName" class="form-label"> Sort by name:</label>
+      <select name="sortName" id="sortName" onchange="sortName()">
+        Sort by price
+        <option value="Ascending">Ascending</option>
+        <option value="descending">Descending</option>
+      </select>
+    </div>
+  </div>  
 
     <div id="products" class="row"></div>
     <!-- Modal -->
@@ -62,7 +94,7 @@
             <input type="text" placeholder="Enter price" id="price" />
             <input type="text" placeholder="Enter img url" id="image" />
             <select name="catergory" id="catergory">
-              <option value="Bread">Bread</option>
+              <option value="fruits">fruits</option>
               <option value="Sweets">Sweets</option>
               <option value="Juices">Juices</option>
             </select>
@@ -86,7 +118,7 @@
         </div>
       </div>
     </div>
-    
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
