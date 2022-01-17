@@ -8,7 +8,7 @@ let products = JSON.parse(localStorage.getItem("products"))
         img: "https://www.game.co.za/medias/583388-EA-1200x1200.jpg?context=bWFzdGVyfGltYWdlc19vbmVjb218MTQxNzE4fGltYWdlL2pwZWd8aDFhL2gyOC84OTU0NTU1NzYwNjcwLmpwZ3w2OGRmNTgyMDBhNjNjNzM1YWIxZmIzMTVkMDgyNjI3Y2NkMjk4NWE4YWM2Y2ZmNTI1NTJhMDljZDk3OTVlOTdh",
       },
       {
-        name: "roll",
+        name: "lindt",
         catergory: "fruits",
         price: "5",
         img: "https://www.melskitchencafe.com/wp-content/uploads/french-bread-roll1.jpg",
